@@ -1,0 +1,28 @@
+
+<link rel="stylesheet" href="/static/style2.css">
+
+<h1> Welcome to my guestbook! </h1>
+
+<p><a href="/add">Add a message</a></p>
+
+{% for e in entries %}
+    <div class="entry">
+        <p class="entrytext"> {{e['text']}} </p>
+        <p class="metadata"> by {{e['author']}} on {{e['timestamp']}} </p>
+        <p class="postid">id: {{e['postid']}}</p>
+    </div>
+    <form action="/delete" method="POST">
+        <p><input type="submit" value="X"/></p>
+        <p><input type="hidden" name="postid" value="{{e['postid']}}"/></p>
+    </form>
+
+    <!--<form action="/edit" method="POST">-->
+        <!--<p><input type="submit" value="Edit"/></p>-->
+        <!--<p><input type="hidden" name="postid" value="{{e['postid']}}"/></p>-->
+    <!--</form>-->
+
+    <!--<script>-->
+        <!--function myFunction() {-->
+            <!--document.getElementById("postid").innerHTML = e['text']; }-->
+    <!--</script>-->
+{% endfor %}
